@@ -116,8 +116,8 @@ This application is designed for hospital administrators, medical administration
 
 2. **Installation:**
     ```bash
-    git clone https://github.com/<your-username>/<your-repo-name>.git
-    cd <your-repo-name>
+    git clone https://github.com/raffyreyhan/Python-Doctor-Schedule-Records.git
+    cd Python-Doctor-Schedule-Records
     pip install -r requirements.txt  # If using a requirements.txt file
     ```
 
@@ -140,7 +140,7 @@ This application is designed for hospital administrators, medical administration
       
 ## Data Model
 This project uses a structured data model to store hospital doctor and schedule information:
-   **Doctors**
+   * **Doctors**
       * id (String, Primary Key):
         Automatically generated unique identifier for each doctor, using the format DR-0001, DR-0002, and so on.
       * nama (String):
