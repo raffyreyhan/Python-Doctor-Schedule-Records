@@ -78,17 +78,17 @@ This application is designed for hospital administrators, medical administration
     * Display a success notification after the doctor record has been deleted.
 * **Search:**
   The application provides five search criteria:
-  *1. By Name*
+    *1. By Name*
         * Supports partial name searches.
         * Search is case-insensitive.
         * For example, searching dina can display Dina Maharani.
-  *2. By Poli*
+    *2. By Poli*
         * Select one of the available medical poli.
-*3. By Status*
+    *3. By Status*
         * Search based on:
             * Aktif
             * Tidak Aktif
-*4. By Working Day*
+    *4. By Working Day*
         * Select one of the seven days:
             * Senin
             * Selasa
@@ -97,7 +97,7 @@ This application is designed for hospital administrators, medical administration
             * Jumat
             * Sabtu
             * Minggu
-*5. By Working Hours*
+    *5. By Working Hours*
         * Select one of the available shifts:
             * 08.00 - 14.00
             * 15.00 - 21.00
