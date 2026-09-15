@@ -1,15 +1,16 @@
-# Tes 1
-# Tes 2
-# Tes 3
-# /************************************/
+# ============================================================
+# RAFFY HOSPITAL
+# PENCATATAN DATA JADWAL DOKTER
+# ============================================================
 
 
-# /===== Data Model =====/
+# ============================================================
+# DATA AWAL
+# ============================================================
 
-# Menyimpan seluruh data dokter
 data = [
     {
-        "id": "DR-0001",
+        "id": "DR-PD-001",
         "nama": "Andi Pratama",
         "gelar": "Sp.PD",
         "poli": "Penyakit Dalam",
@@ -20,7 +21,7 @@ data = [
         "jam": "08.00 - 14.00"
     },
     {
-        "id": "DR-0002",
+        "id": "DR-PD-002",
         "nama": "Budi Santoso",
         "gelar": "Sp.PD",
         "poli": "Penyakit Dalam",
@@ -31,7 +32,7 @@ data = [
         "jam": "15.00 - 21.00"
     },
     {
-        "id": "DR-0003",
+        "id": "DR-A-001",
         "nama": "Citra Lestari",
         "gelar": "Sp.A",
         "poli": "Anak",
@@ -42,7 +43,7 @@ data = [
         "jam": "08.00 - 14.00"
     },
     {
-        "id": "DR-0004",
+        "id": "DR-O-001",
         "nama": "Dina Maharani",
         "gelar": "Sp.OG",
         "poli": "Obgyn",
@@ -53,7 +54,7 @@ data = [
         "jam": "15.00 - 21.00"
     },
     {
-        "id": "DR-0005",
+        "id": "DR-J-001",
         "nama": "Eko Firmansyah",
         "gelar": "Sp.JP",
         "poli": "Jantung",
@@ -64,7 +65,7 @@ data = [
         "jam": "08.00 - 14.00"
     },
     {
-        "id": "DR-0006",
+        "id": "DR-S-001",
         "nama": "Fajar Nugraha",
         "gelar": "Sp.S",
         "poli": "Saraf",
@@ -75,7 +76,7 @@ data = [
         "jam": "Tidak ada jadwal"
     },
     {
-        "id": "DR-0007",
+        "id": "DR-M-001",
         "nama": "Gita Permata",
         "gelar": "Sp.M",
         "poli": "Mata",
@@ -83,84 +84,131 @@ data = [
         "ruang": "M-801",
         "status": "Aktif",
         "hari": ["Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
-        "jam": "14.00 - 20.00"
+        "jam": "15.00 - 21.00"
     }
 ]
 
 
-# /===== Function Tambahan =====/
+# ============================================================
+# DATA MASTER POLI
+# ============================================================
 
+# Menyimpan informasi setiap poli
+poli_data = {
+    "1": {
+        "nama": "Penyakit Dalam",
+        "gelar": "Sp.PD",
+        "kode": "PD",
+        "telp": "0215551001"
+    },
+    "2": {
+        "nama": "Anak",
+        "gelar": "Sp.A",
+        "kode": "A",
+        "telp": "0215551002"
+    },
+    "3": {
+        "nama": "Bedah",
+        "gelar": "Sp.B",
+        "kode": "B",
+        "telp": "0215551003"
+    },
+    "4": {
+        "nama": "Obgyn",
+        "gelar": "Sp.OG",
+        "kode": "O",
+        "telp": "0215551004"
+    },
+    "5": {
+        "nama": "Jantung",
+        "gelar": "Sp.JP",
+        "kode": "J",
+        "telp": "0215551005"
+    },
+    "6": {
+        "nama": "Saraf",
+        "gelar": "Sp.S",
+        "kode": "S",
+        "telp": "0215551006"
+    },
+    "7": {
+        "nama": "Umum",
+        "gelar": "dr.",
+        "kode": "U",
+        "telp": "0215551007"
+    },
+    "8": {
+        "nama": "Gigi",
+        "gelar": "drg.",
+        "kode": "G",
+        "telp": "0215551008"
+    },
+    "9": {
+        "nama": "Mata",
+        "gelar": "Sp.M",
+        "kode": "M",
+        "telp": "0215551009"
+    },
+    "10": {
+        "nama": "THT",
+        "gelar": "Sp.THT",
+        "kode": "T",
+        "telp": "0215551010"
+    }
+}
+
+
+# ============================================================
+# FUNCTION PILIH POLI
+# ============================================================
 
 def pilih_poli():
-    # Menampilkan 10 pilihan poli
-    print("\n=== PILIH POLI ===")
-    print("1. Penyakit Dalam")
-    print("2. Anak")
-    print("3. Bedah")
-    print("4. Obgyn")
-    print("5. Jantung")
-    print("6. Saraf")
-    print("7. Umum")
-    print("8. Gigi")
-    print("9. Mata")
-    print("10. THT")
+    # Menampilkan pilihan poli
+    print("\n--- PILIH POLI ---")
 
-    # Menyimpan pilihan user
-    pilihan = input("Pilih poli: ")
+    for nomor, poli in poli_data.items():
+        print(f"{nomor}. {poli['nama']}")
 
-    # Data poli, gelar, kode ruang, dan telp
-    daftar_poli = {
-        "1": ("Penyakit Dalam", "Sp.PD", "PD", "0215551001"),
-        "2": ("Anak", "Sp.A", "A", "0215551002"),
-        "3": ("Bedah", "Sp.B", "B", "0215551003"),
-        "4": ("Obgyn", "Sp.OG", "O", "0215551004"),
-        "5": ("Jantung", "Sp.JP", "J", "0215551005"),
-        "6": ("Saraf", "Sp.S", "S", "0215551006"),
-        "7": ("Umum", "dr.", "U", "0215551007"),
-        "8": ("Gigi", "drg.", "G", "0215551008"),
-        "9": ("Mata", "Sp.M", "M", "0215551009"),
-        "10": ("THT", "Sp.THT", "T", "0215551010")
-    }
+    pilihan = input("Pilih poli: ").strip()
 
-    # Mengambil data berdasarkan pilihan
-    return daftar_poli.get(pilihan)
+    # Mengecek pilihan
+    if pilihan not in poli_data:
+        print("Input tidak valid.")
+        return None
 
+    return poli_data[pilihan]
+
+
+# ============================================================
+# FUNCTION PILIH STATUS
+# ============================================================
 
 def pilih_status():
     # Menampilkan pilihan status
-    print("\n=== PILIH STATUS ===")
+    print("\n--- PILIH STATUS ---")
     print("1. Aktif")
     print("2. Tidak Aktif")
 
-    # Menyimpan pilihan user
-    pilihan = input("Pilih status: ")
+    pilihan = input("Pilih status: ").strip()
 
-    # Mengembalikan status
     if pilihan == "1":
         return "Aktif"
 
     elif pilihan == "2":
         return "Tidak Aktif"
 
-    return None
+    else:
+        print("Input tidak valid.")
+        return None
 
+
+# ============================================================
+# FUNCTION PILIH HARI
+# ============================================================
 
 def pilih_hari():
-    # Menampilkan pilihan hari
-    print("\n=== PILIH HARI ===")
-    print("1. Senin")
-    print("2. Selasa")
-    print("3. Rabu")
-    print("4. Kamis")
-    print("5. Jumat")
-    print("6. Sabtu")
-    print("7. Minggu")
-
-    # Menyimpan pilihan user
-    pilihan = input("Pilih hari: ")
-
-    # Daftar hari
-    daftar_hari = {
+    # Menyimpan pilihan hari
+    hari_data = {
         "1": "Senin",
         "2": "Selasa",
         "3": "Rabu",
@@ -170,783 +218,884 @@ def pilih_hari():
         "7": "Minggu"
     }
 
-    # Mengembalikan hari
-    return daftar_hari.get(pilihan)
+    print("\n--- PILIH HARI ---")
 
+    for nomor, hari in hari_data.items():
+        print(f"{nomor}. {hari}")
+
+    pilihan = input("Pilih hari: ").strip()
+
+    if pilihan not in hari_data:
+        print("Input tidak valid.")
+        return None
+
+    return hari_data[pilihan]
+
+
+# ============================================================
+# FUNCTION PILIH 5 HARI
+# ============================================================
 
 def pilih_5_hari():
-    # Menyimpan lima hari kerja
-    hari_kerja = []
+    # Menyimpan 5 hari yang dipilih
+    hari_terpilih = []
 
-    print("\n=== PILIH 5 HARI KERJA ===")
+    print("\n--- PILIH 5 HARI KERJA ---")
 
-    # User harus memilih tepat 5 hari
     for i in range(5):
 
-        print("\nHari ke-", i + 1)
+        print(f"\nPilihan hari ke-{i + 1}")
 
-        # Memanggil pilihan hari
         hari = pilih_hari()
 
-        # Mengecek pilihan
         if hari is None:
             return None
 
-        # Mencegah hari yang sama
-        if hari in hari_kerja:
-            print("Data anda tidak valid. Hari sudah dipilih.")
+        # Hari tidak boleh sama
+        if hari in hari_terpilih:
+            print("Hari sudah dipilih.")
             return None
 
-        # Menambahkan hari ke list
-        hari_kerja.append(hari)
+        hari_terpilih.append(hari)
 
-    # Mengembalikan 5 hari
-    return hari_kerja
+    return hari_terpilih
 
+
+# ============================================================
+# FUNCTION PILIH JAM
+# ============================================================
 
 def pilih_jam():
-    # Menampilkan pilihan shift
-    print("\n=== PILIH JADWAL JAM ===")
+    # Menampilkan pilihan jam
+    print("\n--- PILIH JADWAL JAM ---")
     print("1. 08.00 - 14.00")
     print("2. 15.00 - 21.00")
 
-    # Menyimpan pilihan user
-    pilihan = input("Pilih jadwal jam: ")
+    pilihan = input("Pilih jadwal jam: ").strip()
 
-    # Daftar shift
-    daftar_jam = {
-        "1": "08.00 - 14.00",
-        "2": "15.00 - 21.00"
-    }
+    if pilihan == "1":
+        return "08.00 - 14.00"
 
-    # Mengembalikan jam
-    return daftar_jam.get(pilihan)
+    elif pilihan == "2":
+        return "15.00 - 21.00"
 
+    else:
+        print("Input tidak valid.")
+        return None
+
+
+# ============================================================
+# FUNCTION CEK ID
+# ============================================================
 
 def cek_id(id_dokter):
-    # Mengecek apakah ID sudah digunakan
+    # Mengubah ID menjadi huruf besar
+    id_dokter = id_dokter.upper()
+
+    # Mengecek ID pada seluruh data
     for dokter in data:
 
-        # Membandingkan ID
-        if dokter["id"] == id_dokter:
+        if dokter["id"].upper() == id_dokter:
             return True
 
     return False
 
 
-def buat_id():
-    # Membuat ID dokter secara otomatis
+# ============================================================
+# FUNCTION BUAT ID OTOMATIS
+# ============================================================
+
+def buat_id(poli):
+    # Mengambil kode poli
+    kode = poli["kode"]
+
     nomor = 1
 
-    # Mencari nomor ID yang belum digunakan
     while True:
 
-        # Membuat ID seperti DR-0001
-        id_baru = "DR-" + str(nomor).zfill(4)
+        # Membuat ID berdasarkan kode poli
+        id_baru = "DR-" + kode + "-" + str(nomor).zfill(3)
 
-        # Mengecek ID
-        if not cek_id(id_baru):
+        # Memastikan ID tidak duplikat
+        if cek_id(id_baru) == False:
             return id_baru
 
-        # Menaikkan nomor
         nomor += 1
 
 
-def pilih_ruang(poli, kode, hari, jam, id_lama=None):
+# ============================================================
+# FUNCTION PILIH RUANG
+# ============================================================
+
+def pilih_ruang(poli, jam, id_lama=None):
+    # Mengambil kode poli
+    kode = poli["kode"]
+
     # Membuat 3 ruang berdasarkan kode poli
-    if kode == "PD":
-        daftar_ruang = ["PD-001", "PD-002", "PD-003"]
+    ruang_data = [
+        kode + "-001",
+        kode + "-002",
+        kode + "-003"
+    ]
 
-    elif kode == "A":
-        daftar_ruang = ["A-101", "A-102", "A-103"]
-
-    elif kode == "B":
-        daftar_ruang = ["B-201", "B-202", "B-203"]
-
-    elif kode == "O":
-        daftar_ruang = ["O-301", "O-302", "O-303"]
-
-    elif kode == "J":
-        daftar_ruang = ["J-401", "J-402", "J-403"]
-
-    elif kode == "S":
-        daftar_ruang = ["S-501", "S-502", "S-503"]
-
-    elif kode == "U":
-        daftar_ruang = ["U-601", "U-602", "U-603"]
-
-    elif kode == "G":
-        daftar_ruang = ["G-701", "G-702", "G-703"]
-
-    elif kode == "M":
-        daftar_ruang = ["M-801", "M-802", "M-803"]
-
-    elif kode == "T":
-        daftar_ruang = ["T-901", "T-902", "T-903"]
-
-    else:
-        return None
-
-    # Menyimpan ruang yang tersedia
     ruang_tersedia = []
 
-    # Mengecek setiap ruang
-    for ruang in daftar_ruang:
+    print("\n--- PILIH RUANG ---")
 
-        # Menyimpan jumlah dokter dalam ruang
-        jumlah = 0
+    for ruang in ruang_data:
 
-        # Mengecek seluruh data dokter
+        jumlah_dokter = 0
+        bentrok = False
+
         for dokter in data:
 
-            # Melewati data lama saat update
-            if dokter["id"] == id_lama:
-                continue
+            # Saat update, data lama tidak dihitung
+            if id_lama is not None:
 
-            # Mengecek poli dan ruang yang sama
-            if (
-                dokter["poli"] == poli
-                and dokter["ruang"] == ruang
-                and dokter["status"] == "Aktif"
-            ):
-
-                jumlah += 1
-
-                # Ruang tidak boleh memiliki shift yang sama
-                if dokter["jam"] == jam:
-                    jumlah = 2
-
-        # Ruang tersedia jika belum penuh
-        if jumlah < 2:
-
-            # Mengecek kembali agar shift tidak sama
-            bentrok = False
-
-            for dokter in data:
-
-                if dokter["id"] == id_lama:
+                if dokter["id"].upper() == id_lama.upper():
                     continue
 
-                if (
-                    dokter["poli"] == poli
-                    and dokter["ruang"] == ruang
-                    and dokter["status"] == "Aktif"
-                    and dokter["jam"] == jam
-                ):
-                    bentrok = True
+            # Hanya dokter aktif
+            if dokter["status"] == "Aktif":
 
-            # Hanya masukkan ruang yang tidak bentrok
-            if not bentrok:
-                ruang_tersedia.append(ruang)
+                # Poli dan ruang harus sama
+                if dokter["poli"] == poli["nama"] and dokter["ruang"] == ruang:
+
+                    jumlah_dokter += 1
+
+                    # Shift yang sama tidak boleh
+                    if dokter["jam"] == jam:
+                        bentrok = True
+
+        # Ruang maksimal untuk 2 dokter
+        if jumlah_dokter < 2 and bentrok == False:
+            ruang_tersedia.append(ruang)
 
     # Jika tidak ada ruang
     if len(ruang_tersedia) == 0:
-        print("\nTidak ada ruang yang tersedia.")
+
+        print("Tidak ada ruang yang tersedia.")
         return None
 
-    # Menampilkan ruang yang tersedia
-    print("\n=== RUANG TERSEDIA ===")
-
+    # Menampilkan ruang
     for i in range(len(ruang_tersedia)):
-        print(i + 1, ".", ruang_tersedia[i])
+        print(f"{i + 1}. {ruang_tersedia[i]}")
 
-    # Memilih ruang
-    pilihan = input("Pilih ruang: ")
+    pilihan = input("Pilih ruang: ").strip()
 
-    # Validasi pilihan
     if not pilihan.isdigit():
+        print("Input tidak valid.")
         return None
 
     pilihan = int(pilihan)
 
-    # Mengecek nomor pilihan
     if pilihan < 1 or pilihan > len(ruang_tersedia):
+        print("Input tidak valid.")
         return None
 
-    # Mengembalikan ruang
     return ruang_tersedia[pilihan - 1]
 
 
-def tampilkan_tabel(hasil):
-    # Menampilkan data dokter dalam tabel
+# ============================================================
+# FUNCTION TAMPILKAN TABEL
+# ============================================================
+
+def tampilkan_tabel(data_tampil):
+    # Jika data kosong
+    if len(data_tampil) == 0:
+
+        print("\nData tidak ditemukan.")
+        return
+
     print("\n" + "=" * 150)
 
-    # Menampilkan judul kolom
     print(
-        f"{'ID':<10}"
+        f"{'ID':<12}"
         f"{'Nama Dokter':<22}"
         f"{'Gelar':<10}"
-        f"{'Poli':<20}"
+        f"{'Poli':<18}"
         f"{'Telp Poli':<15}"
         f"{'Ruang':<10}"
         f"{'Status':<15}"
-        f"{'Jadwal Hari':<40}"
-        f"{'Jadwal Jam'}"
+        f"{'Jadwal Hari':<35}"
+        f"{'Jadwal Jam':<20}"
     )
 
-    print("-" * 150)
+    print("=" * 150)
 
-    # Menampilkan setiap dokter
-    for dokter in hasil:
+    for dokter in data_tampil:
 
-        # Jika hari berbentuk list
+        # Mengubah list hari menjadi string
         if isinstance(dokter["hari"], list):
-
-            # Menggabungkan hari menjadi satu teks
             hari = ", ".join(dokter["hari"])
-
         else:
-
-            # Untuk dokter tidak aktif
             hari = dokter["hari"]
 
-        # Menampilkan satu baris data
         print(
-            f"{dokter['id']:<10}"
+            f"{dokter['id']:<12}"
             f"{dokter['nama']:<22}"
             f"{dokter['gelar']:<10}"
-            f"{dokter['poli']:<20}"
+            f"{dokter['poli']:<18}"
             f"{dokter['telp']:<15}"
             f"{dokter['ruang']:<10}"
             f"{dokter['status']:<15}"
-            f"{hari:<40}"
-            f"{dokter['jam']}"
+            f"{hari:<35}"
+            f"{dokter['jam']:<20}"
         )
 
     print("=" * 150)
 
 
-def cari_data():
+# ============================================================
+# FUNCTION PILIH KRITERIA PENCARIAN
+# ============================================================
+
+def pilih_kriteria():
     # Menampilkan pilihan pencarian
-    print("\n=== CARI DATA ===")
+    print("\n--- PILIH KRITERIA PENCARIAN ---")
     print("1. Berdasarkan Nama")
     print("2. Berdasarkan Poli")
     print("3. Berdasarkan Status")
     print("4. Berdasarkan Jadwal Hari")
     print("5. Berdasarkan Jadwal Jam")
 
-    # Menyimpan pilihan pencarian
-    pilihan = input("Pilih pencarian: ")
+    pilihan = input("Pilih kriteria: ").strip()
 
-    # Menyimpan kata kunci
-    kata = input("Masukkan kata kunci: ").strip().lower()
+    if pilihan not in ["1", "2", "3", "4", "5"]:
 
-    # Menyimpan hasil pencarian
+        print("Input tidak valid.")
+        return None
+
+    return pilihan
+
+
+# ============================================================
+# FUNCTION CARI DATA
+# ============================================================
+
+def cari_data():
+    # Memilih kriteria pencarian
+    kriteria = pilih_kriteria()
+
+    if kriteria is None:
+        return None
+
     hasil = []
 
-    # Mengecek setiap dokter
-    for dokter in data:
+    # --------------------------------------------------------
+    # BERDASARKAN NAMA
+    # --------------------------------------------------------
 
-        # Cari berdasarkan nama
-        if pilihan == "1":
+    if kriteria == "1":
 
-            # Pencarian sebagian nama
-            if kata in dokter["nama"].lower():
+        nama = input("Masukkan nama dokter: ").strip().lower()
+
+        if nama == "":
+            print("Input tidak valid.")
+            return None
+
+        for dokter in data:
+
+            # Mencari nama secara sebagian
+            if nama in dokter["nama"].lower():
                 hasil.append(dokter)
 
-        # Cari berdasarkan poli
-        elif pilihan == "2":
+    # --------------------------------------------------------
+    # BERDASARKAN POLI
+    # --------------------------------------------------------
 
-            if kata == dokter["poli"].lower():
+    elif kriteria == "2":
+
+        poli = pilih_poli()
+
+        if poli is None:
+            return None
+
+        for dokter in data:
+
+            if dokter["poli"] == poli["nama"]:
                 hasil.append(dokter)
 
-        # Cari berdasarkan status
-        elif pilihan == "3":
+    # --------------------------------------------------------
+    # BERDASARKAN STATUS
+    # --------------------------------------------------------
 
-            if kata == dokter["status"].lower():
+    elif kriteria == "3":
+
+        status = pilih_status()
+
+        if status is None:
+            return None
+
+        for dokter in data:
+
+            if dokter["status"] == status:
                 hasil.append(dokter)
 
-        # Cari berdasarkan hari
-        elif pilihan == "4":
+    # --------------------------------------------------------
+    # BERDASARKAN HARI
+    # --------------------------------------------------------
+
+    elif kriteria == "4":
+
+        hari = pilih_hari()
+
+        if hari is None:
+            return None
+
+        for dokter in data:
 
             if isinstance(dokter["hari"], list):
 
-                for hari in dokter["hari"]:
+                if hari in dokter["hari"]:
+                    hasil.append(dokter)
 
-                    if kata == hari.lower():
-                        hasil.append(dokter)
-                        break
+    # --------------------------------------------------------
+    # BERDASARKAN JAM
+    # --------------------------------------------------------
 
-            elif kata == dokter["hari"].lower():
+    elif kriteria == "5":
 
-                hasil.append(dokter)
-
-        # Cari berdasarkan jam
-        elif pilihan == "5":
-
-            if kata == dokter["jam"].lower():
-                hasil.append(dokter)
-
-        else:
-
-            print("Data anda tidak valid.")
-            return []
-
-    # Mengembalikan hasil
-    return hasil
-
-
-# /===== Feature Program =====/
-
-
-def read():
-    # Fitur mencari dan menampilkan data
-    print("\n=== CARI DAN TAMPILKAN DATA JADWAL DOKTER ===")
-
-    # Pilihan tampilan
-    print("1. Tampilkan Seluruh Data")
-    print("2. Cari Data")
-
-    # Menyimpan pilihan user
-    pilihan = input("Pilih menu: ")
-
-    # Menampilkan seluruh data
-    if pilihan == "1":
-
-        # Konfirmasi
-        yakin = input(
-            "\nApakah anda yakin ingin menampilkan seluruh data? (y/n): "
-        )
-
-        if yakin.lower() != "y":
-            print("Data anda tidak valid.")
-            return
-
-        # Mengecek data kosong
-        if len(data) == 0:
-            print("Belum ada data dokter.")
-            return
-
-        # Menampilkan data
-        tampilkan_tabel(data)
-
-        print("\nData di atas berhasil ditampilkan.")
-
-    # Mencari data
-    elif pilihan == "2":
-
-        # Konfirmasi
-        yakin = input(
-            "\nApakah anda yakin ingin mencari data? (y/n): "
-        )
-
-        if yakin.lower() != "y":
-            print("Data anda tidak valid.")
-            return
-
-        # Menjalankan pencarian
-        hasil = cari_data()
-
-        # Mengecek hasil
-        if len(hasil) == 0:
-            print("\nData tidak ditemukan.")
-            return
-
-        # Menampilkan hasil
-        print("\n=== HASIL PENCARIAN ===")
-        tampilkan_tabel(hasil)
-
-        print("\nData di atas berhasil ditemukan.")
-
-    else:
-
-        print("Data anda tidak valid.")
-
-
-def create():
-    # Fitur menambah data jadwal dokter
-    print("\n=== TAMBAH DATA JADWAL DOKTER ===")
-
-    # User hanya mengetik nama
-    nama = input("Nama dokter: ").strip().title()
-
-    # Validasi nama
-    if nama == "":
-        print("Data anda tidak valid.")
-        return
-
-    # Memilih poli
-    pilihan = pilih_poli()
-
-    # Validasi poli
-    if pilihan is None:
-        print("Data anda tidak valid.")
-        return
-
-    # Mengambil data otomatis dari poli
-    poli = pilihan[0]
-    gelar = pilihan[1]
-    kode = pilihan[2]
-    telp = pilihan[3]
-
-    # Status dokter baru otomatis aktif
-    status = "Aktif"
-
-    # Memilih 5 hari kerja
-    hari = pilih_5_hari()
-
-    # Validasi hari
-    if hari is None:
-        print("Data anda tidak valid.")
-        return
-
-    # Memilih shift
-    jam = pilih_jam()
-
-    # Validasi jam
-    if jam is None:
-        print("Data anda tidak valid.")
-        return
-
-    # Memilih ruang yang tersedia
-    ruang = pilih_ruang(
-        poli,
-        kode,
-        hari,
-        jam
-    )
-
-    # Validasi ruang
-    if ruang is None:
-        print("Data anda tidak valid.")
-        return
-
-    # Membuat ID otomatis
-    id_dokter = buat_id()
-
-    # Membuat dictionary dokter baru
-    dokter_baru = {
-        "id": id_dokter,
-        "nama": nama,
-        "gelar": gelar,
-        "poli": poli,
-        "telp": telp,
-        "ruang": ruang,
-        "status": status,
-        "hari": hari,
-        "jam": jam
-    }
-
-    # Menampilkan data sebelum konfirmasi
-    print("\n=== DATA YANG AKAN DITAMBAHKAN ===")
-    tampilkan_tabel([dokter_baru])
-
-    # Konfirmasi penambahan
-    yakin = input(
-        "\nApakah anda yakin ingin menambah data berikut? (y/n): "
-    )
-
-    if yakin.lower() != "y":
-        print("Data anda tidak valid. Penambahan dibatalkan.")
-        return
-
-    # Menambahkan data ke list
-    data.append(dokter_baru)
-
-    # Afirmasi berhasil
-    print("\nData berikut berhasil ditambahkan:")
-    tampilkan_tabel([dokter_baru])
-
-
-def update():
-    # Fitur mengubah data jadwal dokter
-    print("\n=== UBAH DATA JADWAL DOKTER ===")
-
-    # Mencari data berdasarkan nama terlebih dahulu
-    nama_cari = input(
-        "Masukkan nama dokter yang ingin diubah: "
-    ).strip().lower()
-
-    # Menyimpan hasil nama
-    hasil_nama = []
-
-    # Mencari nama yang mengandung kata kunci
-    for dokter in data:
-
-        if nama_cari in dokter["nama"].lower():
-            hasil_nama.append(dokter)
-
-    # Mengecek hasil
-    if len(hasil_nama) == 0:
-        print("Data anda tidak valid. Dokter tidak ditemukan.")
-        return
-
-    # Menampilkan hasil nama
-    print("\n=== HASIL PENCARIAN NAMA ===")
-    tampilkan_tabel(hasil_nama)
-
-    # Jika lebih dari satu, user memilih ID
-    id_cari = input(
-        "\nMasukkan ID dokter yang ingin diubah: "
-    ).strip().upper()
-
-    # Mencari dokter berdasarkan ID
-    dokter = None
-
-    for item in hasil_nama:
-
-        if item["id"] == id_cari:
-            dokter = item
-            break
-
-    # Validasi ID
-    if dokter is None:
-        print("Data anda tidak valid. ID tidak ditemukan.")
-        return
-
-    # Menampilkan data lama
-    print("\n=== DATA LAMA ===")
-    tampilkan_tabel([dokter])
-
-    # Input nama baru
-    nama = input("Nama dokter baru: ").strip().title()
-
-    # Validasi nama
-    if nama == "":
-        print("Data anda tidak valid.")
-        return
-
-    # Memilih poli baru
-    pilihan = pilih_poli()
-
-    # Validasi poli
-    if pilihan is None:
-        print("Data anda tidak valid.")
-        return
-
-    # Mengambil data otomatis
-    poli = pilihan[0]
-    gelar = pilihan[1]
-    kode = pilihan[2]
-    telp = pilihan[3]
-
-    # Memilih status
-    status = pilih_status()
-
-    # Validasi status
-    if status is None:
-        print("Data anda tidak valid.")
-        return
-
-    # Jika dokter aktif
-    if status == "Aktif":
-
-        # Memilih 5 hari
-        hari = pilih_5_hari()
-
-        if hari is None:
-            print("Data anda tidak valid.")
-            return
-
-        # Memilih shift
         jam = pilih_jam()
 
         if jam is None:
-            print("Data anda tidak valid.")
+            return None
+
+        for dokter in data:
+
+            if dokter["jam"] == jam:
+                hasil.append(dokter)
+
+    # Mengembalikan hasil pencarian
+    return hasil
+
+
+# ============================================================
+# FUNCTION READ
+# ============================================================
+
+def read():
+
+    print("\n--- CARI DAN TAMPILKAN DATA JADWAL DOKTER ---")
+    print("1. Tampilkan Seluruh Data")
+    print("2. Cari Data")
+
+    pilihan = input("Pilih menu: ").strip()
+
+    # --------------------------------------------------------
+    # TAMPILKAN SELURUH DATA
+    # --------------------------------------------------------
+
+    if pilihan == "1":
+
+        # Konfirmasi dilakukan SEBELUM data ditampilkan
+        konfirmasi = input(
+            "\nApakah anda yakin ingin menampilkan seluruh data? (y/n): "
+        ).strip().lower()
+
+        if konfirmasi == "y":
+
+            # Baru menampilkan hasil setelah konfirmasi
+            print("\n--- SELURUH DATA DOKTER ---")
+            tampilkan_tabel(data)
+
+            # Afirmasi
+            print("\nData berhasil ditampilkan.")
+
+        elif konfirmasi == "n":
+
+            print("\nProses dibatalkan.")
+
+        else:
+
+            print("\nInput tidak valid.")
+
+    # --------------------------------------------------------
+    # CARI DATA
+    # --------------------------------------------------------
+
+    elif pilihan == "2":
+
+        # Mencari data terlebih dahulu tanpa menampilkan hasil
+        hasil = cari_data()
+
+        if hasil is None:
             return
 
-        # Memilih ruang
-        ruang = pilih_ruang(
-            poli,
-            kode,
-            hari,
-            jam,
-            dokter["id"]
-        )
+        # Konfirmasi dilakukan sebelum hasil ditampilkan
+        konfirmasi = input(
+            "\nApakah anda yakin ingin menampilkan hasil pencarian? (y/n): "
+        ).strip().lower()
 
-        if ruang is None:
-            print("Data anda tidak valid.")
-            return
+        if konfirmasi == "y":
 
+            # Baru menampilkan hasil setelah konfirmasi
+            print("\n--- HASIL PENCARIAN ---")
+            tampilkan_tabel(hasil)
+
+            # Afirmasi
+            print("\nHasil pencarian berhasil ditampilkan.")
+
+        elif konfirmasi == "n":
+
+            print("\nProses pencarian dibatalkan.")
+
+        else:
+
+            print("\nInput tidak valid.")
+
+    # Input menu tidak valid
     else:
 
-        # Dokter tidak aktif tidak memiliki ruang
-        ruang = "-"
+        print("\nInput tidak valid.")
 
-        # Dokter tidak aktif tidak memiliki jadwal
-        hari = "Tidak ada jadwal"
-        jam = "Tidak ada jadwal"
 
-    # Menyiapkan data baru
-    data_baru = {
-        "id": dokter["id"],
+# ============================================================
+# FUNCTION CREATE
+# ============================================================
+
+def create():
+
+    print("\n--- TAMBAH DATA JADWAL DOKTER ---")
+
+    # Input nama dokter
+    nama = input("Masukkan nama dokter: ").strip().title()
+
+    if nama == "":
+        print("Input tidak valid.")
+        return
+
+    # Pilih poli
+    poli = pilih_poli()
+
+    if poli is None:
+        return
+
+    # Status otomatis Aktif
+    status = "Aktif"
+
+    # Pilih jam
+    jam = pilih_jam()
+
+    if jam is None:
+        return
+
+    # Pilih ruang
+    ruang = pilih_ruang(poli, jam)
+
+    if ruang is None:
+        return
+
+    # Pilih 5 hari
+    hari = pilih_5_hari()
+
+    if hari is None:
+        return
+
+    # Membuat ID otomatis
+    id_baru = buat_id(poli)
+
+    # Membuat data dokter
+    dokter_baru = {
+        "id": id_baru,
         "nama": nama,
-        "gelar": gelar,
-        "poli": poli,
-        "telp": telp,
+        "gelar": poli["gelar"],
+        "poli": poli["nama"],
+        "telp": poli["telp"],
         "ruang": ruang,
         "status": status,
         "hari": hari,
         "jam": jam
     }
 
-    # Menampilkan perubahan
-    print("\n=== DATA SETELAH DIUBAH ===")
-    tampilkan_tabel([data_baru])
+    # Menampilkan data yang akan ditambahkan
+    print("\n--- DATA YANG AKAN DITAMBAHKAN ---")
+    tampilkan_tabel([dokter_baru])
 
-    # Konfirmasi perubahan
-    yakin = input(
-        "\nApakah anda yakin ingin mengubah data berikut? (y/n): "
-    )
-
-    if yakin.lower() != "y":
-        print("Data anda tidak valid. Perubahan dibatalkan.")
-        return
-
-    # Mengubah data lama
-    dokter["nama"] = nama
-    dokter["gelar"] = gelar
-    dokter["poli"] = poli
-    dokter["telp"] = telp
-    dokter["ruang"] = ruang
-    dokter["status"] = status
-    dokter["hari"] = hari
-    dokter["jam"] = jam
-
-    # Afirmasi berhasil
-    print("\nData berikut berhasil diubah:")
-    tampilkan_tabel([dokter])
-
-
-def delete():
-    # Fitur menghapus data jadwal dokter
-    print("\n=== HAPUS DATA JADWAL DOKTER ===")
-
-    # Mencari berdasarkan nama terlebih dahulu
-    nama_cari = input(
-        "Masukkan nama dokter yang ingin dihapus: "
+    # Konfirmasi
+    konfirmasi = input(
+        "\nApakah anda yakin ingin menambah data berikut? (y/n): "
     ).strip().lower()
 
-    # Menyimpan hasil pencarian
-    hasil_nama = []
+    if konfirmasi == "y":
 
-    # Mencari nama yang mengandung kata kunci
-    for dokter in data:
+        # Menambahkan data
+        data.append(dokter_baru)
 
-        if nama_cari in dokter["nama"].lower():
-            hasil_nama.append(dokter)
+        # Afirmasi
+        print("\nData berhasil ditambahkan.")
 
-    # Mengecek hasil
-    if len(hasil_nama) == 0:
-        print("Data anda tidak valid. Dokter tidak ditemukan.")
+        # Menampilkan data setelah eksekusi
+        print("\n--- DATA SETELAH DITAMBAHKAN ---")
+        tampilkan_tabel([dokter_baru])
+
+    elif konfirmasi == "n":
+
+        print("\nProses tambah data dibatalkan.")
+
+    else:
+
+        print("\nInput tidak valid.")
+
+
+# ============================================================
+# FUNCTION UPDATE
+# ============================================================
+
+def update():
+
+    print("\n--- UBAH DATA JADWAL DOKTER ---")
+
+    # Mencari data berdasarkan kriteria
+    hasil = cari_data()
+
+    if hasil is None:
         return
 
-    # Menampilkan hasil
-    print("\n=== HASIL PENCARIAN NAMA ===")
-    tampilkan_tabel(hasil_nama)
+    # Jika data tidak ditemukan
+    if len(hasil) == 0:
 
-    # Meminta ID dokter
-    id_cari = input(
-        "\nMasukkan ID dokter yang ingin dihapus: "
+        print("\nData tidak ditemukan.")
+        return
+
+    # --------------------------------------------------------
+    # MENAMPILKAN HASIL PENCARIAN
+    # --------------------------------------------------------
+
+    print("\n--- DATA HASIL PENCARIAN ---")
+    tampilkan_tabel(hasil)
+
+    # --------------------------------------------------------
+    # KONFIRMASI HASIL PENCARIAN
+    # --------------------------------------------------------
+
+    konfirmasi = input(
+        "\nApakah anda yakin ingin menggunakan data hasil pencarian ini? (y/n): "
+    ).strip().lower()
+
+    if konfirmasi == "n":
+
+        print("\nProses ubah data dibatalkan.")
+        return
+
+    elif konfirmasi != "y":
+
+        print("\nInput tidak valid.")
+        return
+
+    # --------------------------------------------------------
+    # MEMASUKKAN ID BERDASARKAN DATA YANG DITAMPILKAN
+    # --------------------------------------------------------
+
+    id_dokter = input(
+        "\nMasukkan No. ID dokter yang ingin diubah: "
     ).strip().upper()
 
-    # Mencari dokter
-    dokter = None
+    # Mencari ID pada hasil pencarian
+    dokter_lama = None
 
-    for item in hasil_nama:
+    for dokter in hasil:
 
-        if item["id"] == id_cari:
-            dokter = item
+        # ID tidak terpengaruh huruf besar/kecil
+        if dokter["id"].upper() == id_dokter:
+
+            dokter_lama = dokter
             break
 
-    # Validasi ID
-    if dokter is None:
-        print("Data anda tidak valid. ID tidak ditemukan.")
+    # Jika ID tidak ditemukan
+    if dokter_lama is None:
+
+        print("\nID tidak ditemukan pada data hasil pencarian.")
         return
 
-    # Menampilkan data yang akan dihapus
-    print("\n=== DATA YANG AKAN DIHAPUS ===")
-    tampilkan_tabel([dokter])
+    # --------------------------------------------------------
+    # MENAMPILKAN DATA LAMA
+    # --------------------------------------------------------
+
+    print("\n--- DATA LAMA ---")
+    tampilkan_tabel([dokter_lama])
+
+    # --------------------------------------------------------
+    # INPUT DATA BARU
+    # --------------------------------------------------------
+
+    nama_baru = input(
+        "\nMasukkan nama dokter baru: "
+    ).strip().title()
+
+    if nama_baru == "":
+        print("Input tidak valid.")
+        return
+
+    # Pilih poli baru
+    poli_baru = pilih_poli()
+
+    if poli_baru is None:
+        return
+
+    # Pilih status baru
+    status_baru = pilih_status()
+
+    if status_baru is None:
+        return
+
+    # --------------------------------------------------------
+    # JIKA TIDAK AKTIF
+    # --------------------------------------------------------
+
+    if status_baru == "Tidak Aktif":
+
+        ruang_baru = "-"
+        hari_baru = "Tidak ada jadwal"
+        jam_baru = "Tidak ada jadwal"
+
+    # --------------------------------------------------------
+    # JIKA AKTIF
+    # --------------------------------------------------------
+
+    else:
+
+        # Pilih jam baru
+        jam_baru = pilih_jam()
+
+        if jam_baru is None:
+            return
+
+        # Pilih ruang baru
+        ruang_baru = pilih_ruang(
+            poli_baru,
+            jam_baru,
+            dokter_lama["id"]
+        )
+
+        if ruang_baru is None:
+            return
+
+        # Pilih 5 hari baru
+        hari_baru = pilih_5_hari()
+
+        if hari_baru is None:
+            return
+
+    # --------------------------------------------------------
+    # MEMBUAT DATA BARU
+    # --------------------------------------------------------
+
+    dokter_baru = {
+        # ID tetap menggunakan ID lama
+        "id": dokter_lama["id"],
+        "nama": nama_baru,
+        "gelar": poli_baru["gelar"],
+        "poli": poli_baru["nama"],
+        "telp": poli_baru["telp"],
+        "ruang": ruang_baru,
+        "status": status_baru,
+        "hari": hari_baru,
+        "jam": jam_baru
+    }
+
+    # --------------------------------------------------------
+    # MENAMPILKAN DATA YANG AKAN DIUBAH
+    # --------------------------------------------------------
+
+    print("\n--- DATA YANG AKAN DIUBAH ---")
+    tampilkan_tabel([dokter_baru])
+
+    # Konfirmasi perubahan
+    konfirmasi = input(
+        "\nApakah anda yakin ingin mengubah data berikut? (y/n): "
+    ).strip().lower()
+
+    if konfirmasi == "y":
+
+        # Mengubah data lama
+        dokter_lama["nama"] = dokter_baru["nama"]
+        dokter_lama["gelar"] = dokter_baru["gelar"]
+        dokter_lama["poli"] = dokter_baru["poli"]
+        dokter_lama["telp"] = dokter_baru["telp"]
+        dokter_lama["ruang"] = dokter_baru["ruang"]
+        dokter_lama["status"] = dokter_baru["status"]
+        dokter_lama["hari"] = dokter_baru["hari"]
+        dokter_lama["jam"] = dokter_baru["jam"]
+
+        # Afirmasi
+        print("\nData berhasil diubah.")
+
+        # Menampilkan data setelah diubah
+        print("\n--- DATA SETELAH DIUBAH ---")
+        tampilkan_tabel([dokter_lama])
+
+    elif konfirmasi == "n":
+
+        print("\nProses ubah data dibatalkan.")
+
+    else:
+
+        print("\nInput tidak valid.")
+
+
+# ============================================================
+# FUNCTION DELETE
+# ============================================================
+
+def delete():
+
+    print("\n--- HAPUS DATA JADWAL DOKTER ---")
+
+    # Mencari data berdasarkan kriteria
+    hasil = cari_data()
+
+    if hasil is None:
+        return
+
+    # Jika data tidak ditemukan
+    if len(hasil) == 0:
+
+        print("\nData tidak ditemukan.")
+        return
+
+    # --------------------------------------------------------
+    # MENAMPILKAN HASIL PENCARIAN
+    # --------------------------------------------------------
+
+    print("\n--- DATA HASIL PENCARIAN ---")
+    tampilkan_tabel(hasil)
+
+    # --------------------------------------------------------
+    # KONFIRMASI HASIL PENCARIAN
+    # --------------------------------------------------------
+
+    konfirmasi = input(
+        "\nApakah anda yakin ingin menggunakan data hasil pencarian ini? (y/n): "
+    ).strip().lower()
+
+    if konfirmasi == "n":
+
+        print("\nProses hapus data dibatalkan.")
+        return
+
+    elif konfirmasi != "y":
+
+        print("\nInput tidak valid.")
+        return
+
+    # --------------------------------------------------------
+    # MEMASUKKAN ID BERDASARKAN DATA YANG DITAMPILKAN
+    # --------------------------------------------------------
+
+    id_dokter = input(
+        "\nMasukkan No. ID dokter yang ingin dihapus: "
+    ).strip().upper()
+
+    # Mencari dokter berdasarkan ID
+    dokter_hapus = None
+
+    for dokter in hasil:
+
+        # ID tidak terpengaruh huruf besar/kecil
+        if dokter["id"].upper() == id_dokter:
+
+            dokter_hapus = dokter
+            break
+
+    # Jika ID tidak ditemukan
+    if dokter_hapus is None:
+
+        print("\nID tidak ditemukan pada data hasil pencarian.")
+        return
+
+    # --------------------------------------------------------
+    # MENAMPILKAN DATA YANG AKAN DIHAPUS
+    # --------------------------------------------------------
+
+    print("\n--- DATA YANG AKAN DIHAPUS ---")
+    tampilkan_tabel([dokter_hapus])
 
     # Konfirmasi penghapusan
-    yakin = input(
+    konfirmasi = input(
         "\nApakah anda yakin ingin menghapus data berikut? (y/n): "
-    )
+    ).strip().lower()
 
-    if yakin.lower() != "y":
-        print("Data anda tidak valid. Penghapusan dibatalkan.")
-        return
+    if konfirmasi == "y":
 
-    # Menyimpan data sebelum dihapus
-    data_hapus = dokter.copy()
+        # Menyimpan data sebelum dihapus
+        data_terhapus = dokter_hapus.copy()
 
-    # Menghapus data dari list
-    data.remove(dokter)
+        # Menghapus data
+        data.remove(dokter_hapus)
 
-    # Afirmasi berhasil
-    print("\nData berikut berhasil dihapus:")
-    tampilkan_tabel([data_hapus])
+        # Afirmasi
+        print("\nData berhasil dihapus.")
+
+        # Menampilkan data yang telah dihapus
+        print("\n--- DATA YANG TELAH DIHAPUS ---")
+        tampilkan_tabel([data_terhapus])
+
+    elif konfirmasi == "n":
+
+        print("\nProses hapus data dibatalkan.")
+
+    else:
+
+        print("\nInput tidak valid.")
 
 
-# /===== Main Program =====/
-
+# ============================================================
+# FUNCTION MAIN
+# ============================================================
 
 def main():
-    # Fungsi utama program
+
     while True:
 
-        # Judul program
-        print("\n" + "=" * 60)
-        print("              RAFFY HOSPITAL")
-        print("       PENCATATAN DATA JADWAL DOKTER")
-        print("=" * 60)
+        print("\n")
+        print("=" * 50)
+        print("             RAFFY HOSPITAL")
+        print("    PENCATATAN DATA JADWAL DOKTER")
+        print("=" * 50)
 
-        # Menu utama
         print("1. Cari dan Tampilkan Data Jadwal Dokter")
         print("2. Tambah Data Jadwal Dokter")
         print("3. Ubah Data Jadwal Dokter")
         print("4. Hapus Data Jadwal Dokter")
         print("5. Keluar Program")
 
-        # Input menu
-        input_user = input("\nPilih menu: ")
+        pilihan = input("Pilih menu: ").strip()
 
-        # Menjalankan fitur cari
-        if input_user == "1":
+        # READ
+        if pilihan == "1":
             read()
 
-        # Menjalankan fitur tambah
-        elif input_user == "2":
+        # CREATE
+        elif pilihan == "2":
             create()
 
-        # Menjalankan fitur ubah
-        elif input_user == "3":
+        # UPDATE
+        elif pilihan == "3":
             update()
 
-        # Menjalankan fitur hapus
-        elif input_user == "4":
+        # DELETE
+        elif pilihan == "4":
             delete()
 
-        # Keluar program
-        elif input_user == "5":
+        # EXIT
+        elif pilihan == "5":
 
-            # Konfirmasi keluar
-            yakin = input(
-                "\nApakah anda yakin ingin keluar dari program? (y/n): "
-            )
+            print("\nTerima kasih telah menggunakan Raffy Hospital.")
+            print("Pencatatan Data Jadwal Dokter")
+            print("Semoga layanan kami membantu Anda.")
 
-            if yakin.lower() == "y":
+            break
 
-                # Pesan penutup
-                print("\n" + "=" * 60)
-                print(" Terima kasih telah menggunakan Raffy Hospital.")
-                print(" Pencatatan Data Jadwal Dokter")
-                print(" Semoga layanan kami membantu Anda.")
-                print("=" * 60)
-
-                # Menghentikan program
-                break
-
-            else:
-
-                print("Data anda tidak valid.")
-
+        # Menu tidak valid
         else:
 
-            # Jika menu tidak tersedia
-            print("Data anda tidak valid.")
+            print("\nInput tidak valid.")
 
 
-# Menjalankan fungsi main
+# ============================================================
+# MENJALANKAN PROGRAM
+# ============================================================
+
 if __name__ == "__main__":
     main()
