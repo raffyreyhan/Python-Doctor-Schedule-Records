@@ -142,7 +142,7 @@ This application is designed for hospital administrators, medical administration
 This project uses a structured data model to store hospital doctor and schedule information:
    * **Doctors**
       * id (String, Primary Key):
-        Automatically generated unique identifier for each doctor, using the format DR-0001, DR-0002, and so on.
+        Automatically generated unique identifier for each doctor, using the format DR-A-001, DR-PD-001, and so on.
       * nama (String):
         Full name of the doctor.
       * gelar (String):
